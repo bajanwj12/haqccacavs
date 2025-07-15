@@ -1,92 +1,92 @@
-#!/bin/python3
+#！/bin/python3
 """
-Buildozer action
+Buildozer动作
 ================
 
-It sets some environment variables, installs Buildozer, runs Buildozer and finds
-output file.
+它设置一些环境变量，安装Buildozer，运行Buildozer并查找
+输出文件。
 
-You can read this file top down because functions are ordered by their execution
-order.
+您可以自上而下地读取此文件，因为函数是按其执行顺序排列的。
+顺序。
 """
 
-import os
-import subprocess
-import sys
-from os import environ as env
+进口 os
+进口子流程
+进口sys
+从……起os进口environ作为env
 
 
-def main():
-    repository_root = os.path.abspath(env["INPUT_REPOSITORY_ROOT"])
-    change_owner(env["USER"], repository_root)
-    fix_home()
-    install_buildozer(env["INPUT_BUILDOZER_VERSION"])
-    apply_buildozer_settings()
-    change_directory(env["INPUT_REPOSITORY_ROOT"], env["INPUT_WORKDIR"])
-    apply_patches()
-    run_command(env["INPUT_COMMAND"])
-    set_output(env["INPUT_REPOSITORY_ROOT"], env["INPUT_WORKDIR"])
-    change_owner("root", repository_root)
+定义main()定义main()定义main()定义main()定义main()定义main()：
+repository_root=os。路径.aspath(环境["INPUT_REPOSITORY_ROOT"])aspath(环境["INPUT_REPOSITORY_ROOT"])aspath(环境["INPUT_REPOSITORY_ROOT"])aspath(aspath(环境["INPUT_REPOSITORY_ROOT"])["INPUT_REPOSITORY_ROOT"])aspath(环境["INPUT_REPOSITORY_ROOT"])
+变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者)(变更拥有者(变更拥有者)(变更拥有者(变更拥有者)(_O)(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R))(环境)["用户"]，存储库根目录(_R)
+修复原点(修复原点(修复原点(修复原点(修复原点(修复原点(修复原点(修复原点(修复原点(修复原点(修复原点(修复原点(修复原点)修复原点(修复原点(修复原点)(_H)())())())())())())())())())())())())())())())()
+install_buildozer(install_buildozer(install_buildozer(install_buildozer(install_buildozer(install_buildozer(install_buildozer(环境["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])["INPUT_Buildozer_VERSION"])
+apply_buildozer_settings()
+更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录(更改目录)(_D)(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"]))(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])
+应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序(应用修补程序 (_P)())())())())())())())())())())())())())())())()
+run_command(run_command(run_command(run_command(环境["INPUT_COMMAND"]))["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])(run_command(run_command(run_command(run_command(环境["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])["INPUT_COMMAND"])
+set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(set_output(env["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])["INPUT_REPOSITORY_ROOT"]，env["INPUT_WORKDIR"])
+变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(变更拥有者(_O)("根"，repository_root))("根"，存储库根目录(_R))("根"，存储库根目录(_R)))("根"，存储库根目录(_R)))("根"，存储库根目录(_R)))("根"，存储库根目录(_R))("根"，存储库根目录(_R)))("根"，存储库根目录(_R)))("根"，repository_root))("根"，存储库根目录(_R))("根"，存储库根目录(_R)))("根"，存储库根目录(_R)))("根"，存储库根目录(_R)))("根"，存储库根目录(_R))("根"，存储库根目录(_R)))("根"，存储库根目录(_R))
 
 
-def change_owner(user, repository_root):
-    # GitHub sets root as owner of repository directory. Change it to user
-    # And return to root after all commands
-    subprocess.check_call(["sudo", "chown", "-R", user, repository_root])
+定义变更拥有者(定义变更拥有者(定义变更拥有者(定义变更拥有者(_O)(用户，存储库根目录)：)(用户，存储库根目录)：(定义变更拥有者(定义变更拥有者(定义变更拥有者(_O)(用户，存储库根目录)：)(用户，存储库根目录)：)(用户，存储库根目录)：)(用户，存储库根目录)：
+#GitHub将根目录设置为存储库目录的所有者。将其更改为用户
+#并在所有命令后返回到root
+子流程。check_call(["sudo"，"chown"，"-R"，用户，存储库根])
 
 
-def fix_home():
-    # GitHub sets HOME to /github/home, but Buildozer is installed to /home/user. Change HOME to user's home
-    env["HOME"] = env["HOME_DIR"]
+定义修复原点(_H)()：
+#GitHub将HOME设置为/GitHub/home，但Buildozer安装到/主页/用户。将主页更改为用户的主页
+env["主页"]=env["HOME_DIR"]
 
 
-def install_buildozer(buildozer_version):
-    # Install required Buildozer version
-    print("::group::Installing Buildozer")
-    pip_install = [sys.executable] + "-m pip install --user --upgrade".split()
-    if buildozer_version == "stable":
-        # Install stable buildozer from PyPI
-        subprocess.check_call([*pip_install, "buildozer"])
-    elif os.path.exists(buildozer_version) and os.path.exists(
-        os.path.join(buildozer_version, "buildozer", "__init__.py")
+定义安装Buildozer(Buildozer版本)(_V)：
+#安装所需的Buildozer版本
+打印("：：组：：安装Buildozer”)
+PIP_install=[sys.可执行的]+"-m pip安装--用户--升级"".分离()
+如果Buildozer_version=="稳定"：
+#从PyPI安装稳定的Buildozer
+子流程.check_call([*pip_install，"buildozer"])
+Elif os.路径.存在(Buildozer_version)和操作系统。路径.存在(
+操作系统。路径.参加(buildozer_version，"buildozer"，"__init__.py")
     ):
-        # Install from local directory
-        subprocess.check_call([*pip_install, buildozer_version])
-    elif buildozer_version.startswith("git+"):
-        # Install from specified git+ link
-        subprocess.check_call([*pip_install, buildozer_version])
-    elif buildozer_version == "":
-        # Just do nothing
-        print(
-            "::warning::Buildozer is not installed because "
-            "specified buildozer_version is nothing."
+#从本地目录安装
+子流程.check_call([*pip_install，buildozer_version])
+Elif buildozer_version.startswith("git+")：
+#从指定git+链接安装
+子流程.check_call([*pip_install，buildozer_version])
+Elif buildozer_version==""：
+#什么都不做
+打印(
+"：：警告：：未安装Buildozer，原因是"
+"指定的Buildozer_version为空。"
         )
-    else:
-        # Install specified ref from repository
-        subprocess.check_call(
+其他:
+#从资源库安装指定的ref
+子流程.check_call(
             [
-                *pip_install,
-                f"git+https://github.com/kivy/buildozer.git@{buildozer_version}",
+*pip_install，
+F"git+https://github.com/kivy/buildozer.git@{Buildozer_version}"，
             ]
         )
-    print("::endgroup::")
+打印(“：：endgroup：：”)
 
 
-def apply_buildozer_settings():
-    # Buildozer settings to disable interactions
-    env["BUILDOZER_WARN_ON_ROOT"] = "0"
-    env["APP_ANDROID_ACCEPT_SDK_LICENSE"] = "1"
-    # Do not allow to change directories
-    env["BUILDOZER_BUILD_DIR"] = "./.buildozer"
-    env["BUILDOZER_BIN"] = "./bin"
+定义apply_buildozer_settings()：
+#Buildozer设置禁用交互
+env["Buildozer_WARN_ON_ROOT"]="0"
+env["APP_ANDROID_ACCEPT_SDK_LICENSE"]="1"
+#不允许更改目录
+env["Buildozer_BUILD_DIR"]="./.buildozer"
+env["Buildozer_BIN"]="./bin"
 
 
-def change_directory(repository_root, workdir):
-    directory = os.path.join(repository_root, workdir)
-    # Change directory to workir
-    if not os.path.exists(directory):
-        print("::error::Specified workdir is not exists.")
-        exit(1)
+Def更改目录(_D)(repository_root，workdir)：
+directory=os.路径.参加(repository_root，workdir)
+#更改目录为workir
+如果不os.path.存在(目录)：
+打印("：：错误：：指定的工作目录不存在。" )
+出口(1)
     os.chdir(directory)
 
 
