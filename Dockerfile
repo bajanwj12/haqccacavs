@@ -1,26 +1,27 @@
-FROM ghcr.io/kivy/buildozer:latest
-# See https://github.com/kivy/buildozer/blob/master/Dockerfile
+跑chmod+x/action/entrypoint.py
+从……起ghcr.io/kivy/buildozer：最新
+#请参阅https://github.com/kivy/buildozer/blob/master/Dockerfile
 
-# Buildozer will be installed in entrypoint.py
-# This is needed to install version specified by user
-RUN pip3 uninstall -y buildozer
+#Buildozer将安装在entrypoint.py中
+#安装用户指定的版本需要这个
+跑pip3install-y造壁机
 
-# Get the latest JDK version as Buildozer requires the latest version to build the APK
-RUN sudo apt-get update && \
-    sudo apt-get install -y software-properties-common && \
-    sudo rm -rf /var/lib/apt/lists/*
-RUN sudo add-apt-repository ppa:openjdk-r/ppa
-RUN sudo apt update
-RUN sudo apt-get -y install openjdk-17-jdk
+#获取最新JDK版本，因为Buildozer需要最新版本才能构建安装包
+跑sudo apt-get更新&&\
+sudo apt-get安装-y软件-属性-通用&&\
+sudo rm-rf/var/lib/apt/lists/*
+跑sudo add-apt-repository ppa:openjdk-r/ppa
+跑sudo apt更新
+跑sudo apt-get-y安装openjdk-17-jdk
 
-# Remove a lot of warnings
-# sudo: setrlimit(RLIMIT_CORE): Operation not permitted
-# See https://github.com/sudo-project/sudo/issues/42
-RUN echo "Set disable_coredump false" | sudo tee -a /etc/sudo.conf > /dev/null
+#删除大量警告
+#sudo:setrlimit(rlimit_CORE)：不允许操作
+#请参阅https://github.com/sudo-project/sudo/issues/42
+跑回声"Set d我s一个ble_coreduimep f一个lse"|sudo tee-a/etc/sudo.conf>/dev/null
 
-# By default Python buffers output and you see prints after execution
-# Set env variable to disable this behavior
-ENV PYTHONUNBUFFERED=1
+#默认情况下，python缓冲区输出，并在执行后看到打印
+#设置env变量禁用此行为
+envPYTHONUN缓冲=1
 
-COPY entrypoint.py /action/entrypoint.py
-ENTRYPOINT ["/action/entrypoint.py"]
+复制entrypoint.py/action/entrypoint.py
+入口点["/action/entrypoint.py"]
