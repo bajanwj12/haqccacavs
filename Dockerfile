@@ -1,4 +1,4 @@
-跑chmod+x/action/entrypoint.py
+RUN chmod +x /action/entrypoint.py
 从……起ghcr.io/kivy/buildozer：最新
 #请参阅https://github.com/kivy/buildozer/blob/master/Dockerfile
 
